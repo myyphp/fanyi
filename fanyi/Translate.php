@@ -90,7 +90,7 @@ class Translate {
     /**
      * 从Tp 的lang 包中提取中英文信息：为了保留注释内容而没有直接使用数组方式
      * @param bool $key_is_cn key内容为中文
-     * @return mixed
+     * @return
      */
     public function getDataFromTPLangFile($key_is_cn = true)
     {
@@ -113,20 +113,20 @@ class Translate {
                     $cn = $content[1];
                     $en = $content[0];
                 }
+                if (!$en) {
+                    $metaObj->setCn($cn);
+                    $metaObj->setEn($en);
 
-                $metaObj->setCn($cn);
-                $metaObj->setEn($en);
+                    $waitReplace = str_replace($en, $metaObj->getEnPlaceholder(), $metaObj->getOrign());
+                    //$waitReplace = str_replace($cn, $waitReplace, $line);//暂时不处理 英 =》 汉
+                    $metaObj->setWaitReplaceStr($waitReplace);
 
-                $waitReplace = str_replace($en, $metaObj->getEnPlaceholder(), $metaObj->getOrign());
-                //$waitReplace = str_replace($cn, $waitReplace, $line);//暂时不处理 英 =》 汉
-                $metaObj->setWaitReplaceStr($waitReplace);
-
-                /*$this->_printMsg($metaObj->getCn());
-                $this->_printMsg($metaObj->getEn());
-                $this->_printMsg($metaObj->getOrign());
-                $this->_printMsg($metaObj->getWaitReplaceStr());exit;*/
+                    /*$this->_printMsg($metaObj->getCn());
+                    $this->_printMsg($metaObj->getEn());
+                    $this->_printMsg($metaObj->getOrign());
+                    $this->_printMsg($metaObj->getWaitReplaceStr());exit;*/
+                }
             }
-
             //放入队列结构等待处理
             $this->resouce_data->addData($metaObj);
         }
@@ -373,6 +373,8 @@ class Translate {
                 //没有待替换的内容，则不做任何处理，原样输出即可
                 fwrite($fp, $data_meta->getOrign());
             } else {
+                //如果en已经有值了，也不做任何处理
+
                 $query_origin = $data_meta->getCn();
                 $query = mb_convert_encoding($query_origin, 'GBK', 'UTF-8');
                 //生成 sign 参数

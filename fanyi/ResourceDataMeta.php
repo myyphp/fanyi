@@ -18,12 +18,12 @@ class ResourceDataMeta
     /**
      * @var string $enPlaceholder 英文内容的占位符
      */
-    private $enPlaceholder = '---EN---';
+    private $enPlaceholder = "'---EN---'";
 
     /**
      * @var string $cnPlaceholder 中文内容的占位符
      */
-    private $cnPlaceholder = '---CN---';
+    private $cnPlaceholder = "'---CN---'";
 
     /**
      * @var string $orign 待替换的内容,其中有2个占位符， 示例："---CN---" => "---EN---"
