@@ -56,7 +56,10 @@ class Translate {
      */
     public function setResourceType($type)
     {
-
+        if (!in_array($type, [self::PHP_LANG_FILE, self::JAVA_LANG_FILE])) {
+            throw new \InvalidArgumentException('resource type is error');
+        }
+        $this->lang_file_type = $type;
     }
 
     /**
