@@ -11,9 +11,9 @@
 
 // 自定义中文语言包
 return [
-    '后台授权' => "",
-    'APP功能授权' => "",
-    '订单总数量' => "",
-    '已注册会员员数量' => "",
-    '订单统计' => "",
+    '统计概览' => "Statistical overview",
+    '产品总数量' => "Total Product Quantity",
+    '订单总数量' => "Total Order Quantity",
+    '已注册会员员数量' => "Number of registered members",
+    '订单统计' => "Order statistics",
 ];

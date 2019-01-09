@@ -34,7 +34,7 @@ if (!$argv[2]) {
 }
 
 //第四个参数控制是否转码，有时候转码会导致生成 签名参数异常，有时候不会，可以根据最终生成的结果再尝试切换
-if ($argv[3]) {
+if (isset($argv[3])) {
     $translateObj->setOpenIconv(boolval($argv[3]));
 }
 

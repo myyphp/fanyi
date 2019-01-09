@@ -317,6 +317,7 @@ class Translate {
         $return = trim($return, ".'");
         $return = str_replace('uuuuuuuuuuuu', '',  $return);
         $return = str_replace('uuuuuuuuuuu', '',  $return);
+        $return = str_replace('uuuuuuuuuu', '',  $return);
         return $return;
     }
 
