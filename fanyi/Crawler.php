@@ -13,7 +13,7 @@ class Crawler
 {
     private $curl;
     private $proxyHost = '127.0.0.1';//代理服务器的ip
-    private $proxyPort = '8888';//代理服务器的端口
+    private $proxyPort = 8888;//代理服务器的端口
     private $timeoutLimit = 30;
     protected $cookiePath = './cookie/';
     private $cookieFile = '';
@@ -35,7 +35,7 @@ class Crawler
     }
 
     /**
-     * @param string $proxyPort
+     * @param int $proxyPort
      */
     public function setProxyPort($proxyPort)
     {
